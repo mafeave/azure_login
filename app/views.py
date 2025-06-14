@@ -83,7 +83,9 @@ def register_user(request):
 
             response = requests.post("https://graph.microsoft.com/v1.0/users", json=data, headers=headers)
             if response.status_code == 201:
-                return HttpResponse("✅ Usuario creado correctamente en Microsoft Entra ID.")
+                upn = data['userPrincipalName']
+                return render(request, 'register_success.html', {'upn': upn})
+                #return HttpResponse("✅ Usuario creado correctamente en Microsoft Entra ID.")
             else:
                 return HttpResponse(f"❌ Error al crear usuario: {response.status_code} - {response.text}")
     else:
