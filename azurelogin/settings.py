@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import re
 from pathlib import Path
 
 import os
@@ -56,6 +56,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_auth_adfs.middleware.LoginRequiredMiddleware',
 ]
+
+LOGIN_EXEMPT_URLS = (
+    re.compile(r'^register/?$'),
+)
 
 ROOT_URLCONF = 'azurelogin.urls'
 

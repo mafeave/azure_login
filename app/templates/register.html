@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html>
-<head><title>Registro</title></head>
-<body>
-    <h1>Registro de Usuario</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrar</button>
-    </form>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Crear cuenta</h2>
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+
+            <div>
+                <label for="id_first_name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+            </div>
+
+            <div>
+                <label for="id_last_name" class="block text-sm font-medium text-gray-700">Apellido</label>
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+
+            <div>
+                <label for="id_email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div>
+                <label for="id_password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                {{ form.password }}
+                {{ form.password.errors }}
+            </div>
+
+            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-xl shadow">
+                Registrarse
+            </button>
+        </form>
+    </div>
+
 </body>
 </html>
