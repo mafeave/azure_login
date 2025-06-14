@@ -49,7 +49,7 @@ def login_successful(request):
             return HttpResponse(f"Hola {json_response['givenName']} Login successful")
     
     except:
-        return HttpResponse('Unable ti fetch user details from graph APIs')
+        return HttpResponse('Unable to fetch user details from graph APIs')
 
 def register_user(request):
     if request.method == 'POST':
@@ -71,6 +71,8 @@ def register_user(request):
             data = {
                 "accountEnabled": True,
                 "displayName": f"{form.cleaned_data['first_name']} {form.cleaned_data['last_name']}",
+                "givenName": form.cleaned_data['first_name'],
+                "surname": form.cleaned_data['last_name'],
                 "mailNickname": local_part,
                 "userPrincipalName": f"{local_part}@{settings.TENANT_DOMAIN}",
                 "passwordProfile": {
