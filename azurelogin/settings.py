@@ -144,12 +144,10 @@ LOGIN_REDIRECT_URL = "/"
 
 # Client secret is not public information. Should store it as an environment variable.
 
-CLIENT_ID = os.getenv('client_id')
-CLIENT_SECRET = os.getenv('client_secret')
-TENANT_ID = os.getenv('tenant_id')
-
-#AD_URL = os.getenv('ad_url')
-TENANT_DOMAIN = os.getenv('tenant_domain')
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+TENANT_ID = os.getenv('TENANT_ID')
+TENANT_DOMAIN = os.getenv('TENANT_DOMAIN')
 AD_URL = f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token"
 
 AUTH_ADFS = {
